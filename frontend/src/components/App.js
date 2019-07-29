@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 
 import {getTop10} from '../services/videos';
 
+import Table from './Table';
+
 const App = () => {
 
   useEffect(() => {
@@ -16,7 +18,7 @@ const App = () => {
   return (
     <div>
       <h1>Hello Homepage</h1>
-      {top10Videos.map(video => <p key={video.id}>{video.likes} - {video.title}</p>)}
+      <Table top10Videos={top10Videos}/>
     </div>
   )
 };
