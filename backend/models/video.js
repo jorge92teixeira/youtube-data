@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-underscore-dangle */
 const mongoose = require('mongoose');
 
 const videoSchema = new mongoose.Schema({
@@ -24,14 +26,14 @@ videoSchema.set('toJSON', {
     returnedObject.id = returnedObject._id.toString();
     delete returnedObject._id;
     delete returnedObject.__v;
-  }
+  },
 });
 
-const gbVideo =  mongoose.model('gbVideo', videoSchema, 'gbVideos');
-const usVideo =  mongoose.model('usVideo', videoSchema, 'usVideos');
-const deVideo =  mongoose.model('deVideo', videoSchema, 'deVideos');
-const frVideo =  mongoose.model('frVideo', videoSchema, 'frVideos');
-const caVideo =  mongoose.model('caVideo', videoSchema, 'caVideos');
+const gbVideo = mongoose.model('gbVideo', videoSchema, 'gbVideos');
+const usVideo = mongoose.model('usVideo', videoSchema, 'usVideos');
+const deVideo = mongoose.model('deVideo', videoSchema, 'deVideos');
+const frVideo = mongoose.model('frVideo', videoSchema, 'frVideos');
+const caVideo = mongoose.model('caVideo', videoSchema, 'caVideos');
 
 module.exports = {
   gbVideo,
@@ -39,4 +41,4 @@ module.exports = {
   deVideo,
   frVideo,
   caVideo,
-}
+};

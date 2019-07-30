@@ -1,11 +1,12 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import ReactTable from 'react-table';
+// import PropTypes from 'prop-types';
 
-const Table = ({top10Videos}) => {
-
+const Table = ({ top10Videos }) => {
   // const thumb = top10Videos.map(video => {
   //   return video.thumbnail_link;
-  // }); 
+  // });
 
   const columns = [{
     Header: 'Thumbnail',
@@ -13,21 +14,21 @@ const Table = ({top10Videos}) => {
     // Cell: (thumb) => {
     //   return <img src={thumb.thumbnail_link}></img>
     // }
-  },{
+  }, {
     Header: 'Title',
-    accessor: 'title'
-  },{
+    accessor: 'title',
+  }, {
     Header: 'Channel',
-    accessor: 'channel_title'
-  },{
+    accessor: 'channel_title',
+  }, {
     Header: 'Views',
-    accessor: 'views'
-  },{
+    accessor: 'views',
+  }, {
     Header: 'Likes',
-    accessor: 'likes'
-  },{
+    accessor: 'likes',
+  }, {
     Header: 'Id',
-    accessor: 'video_id'
+    accessor: 'video_id',
   },
   ];
 
@@ -58,7 +59,7 @@ const Table = ({top10Videos}) => {
     //     </TableEntrie>)}
     //   </tbody>
     // </table>
-  )
+  );
 };
 
 export default Table;
