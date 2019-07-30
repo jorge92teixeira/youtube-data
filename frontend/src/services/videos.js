@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const baseUrl = '/api/videos/top10likesgb';
+const baseUrl = '/api/videos/top10likes';
 
-export const getTop10 = () => {
+export const getTop10 = (cc) => {
   return axios
-          .get(baseUrl)
+          .get(baseUrl+cc)
           .then(res => res.data);
 }
