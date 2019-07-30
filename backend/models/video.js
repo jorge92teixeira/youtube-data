@@ -7,6 +7,7 @@ const videoSchema = new mongoose.Schema({
   channel_title: String,
   category_id: Number,
   publish_time: String,
+  tags: String,
   views: Number,
   likes: Number,
   dislikes: Number,
@@ -26,4 +27,16 @@ videoSchema.set('toJSON', {
   }
 });
 
-module.exports = mongoose.model('Video', videoSchema);
+const gbVideo =  mongoose.model('gbVideo', videoSchema, 'gbVideos');
+const usVideo =  mongoose.model('usVideo', videoSchema, 'usVideos');
+const deVideo =  mongoose.model('deVideo', videoSchema, 'deVideos');
+const frVideo =  mongoose.model('frVideo', videoSchema, 'frVideos');
+const caVideo =  mongoose.model('caVideo', videoSchema, 'caVideos');
+
+module.exports = {
+  gbVideo,
+  usVideo,
+  deVideo,
+  frVideo,
+  caVideo,
+}
