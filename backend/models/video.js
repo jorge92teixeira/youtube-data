@@ -18,7 +18,7 @@ const videoSchema = new mongoose.Schema({
   comments_disabled: String,
   ratings_disabled: String,
   video_error_or_removed: String,
-  description: String,
+  country_code: String,
 });
 
 videoSchema.set('toJSON', {
@@ -29,16 +29,13 @@ videoSchema.set('toJSON', {
   },
 });
 
-const gbVideo = mongoose.model('gbVideo', videoSchema, 'gbVideos');
-const usVideo = mongoose.model('usVideo', videoSchema, 'usVideos');
-const deVideo = mongoose.model('deVideo', videoSchema, 'deVideos');
-const frVideo = mongoose.model('frVideo', videoSchema, 'frVideos');
-const caVideo = mongoose.model('caVideo', videoSchema, 'caVideos');
+// const gbVideo = mongoose.model('gbVideo', videoSchema, 'gbVideos');
+// const usVideo = mongoose.model('usVideo', videoSchema, 'usVideos');
+// const deVideo = mongoose.model('deVideo', videoSchema, 'deVideos');
+// const frVideo = mongoose.model('frVideo', videoSchema, 'frVideos');
+// const caVideo = mongoose.model('caVideo', videoSchema, 'caVideos');
+const Video = mongoose.model('Video', videoSchema);
 
 module.exports = {
-  gbVideo,
-  usVideo,
-  deVideo,
-  frVideo,
-  caVideo,
+  Video,
 };
