@@ -7,20 +7,35 @@ const videosRouter = require('express').Router();
 
 const { Video } = require('../models/video');
 
-videosRouter.get('/top10views', async (req, res) => {
-  const videos = await Video.find({}).sort({ views: -1 }).limit(10);
-  res.json(videos.map(video => video.toJSON()));
+// Get Top 10 videos with more views
+videosRouter.get('/top10views/:id', async (req, res) => {
+  const videos = await Video
+    .find({ country_code: req.params.id })
+    .sort({ views: -1 })
+    .limit(1000);
+
+  let result = videos.map(e => e.video_id)
+    .map((e, i, final) => final.indexOf(e) === i && i)
+    .filter(e => videos[e])
+    .map(e => videos[e]);
+
+  result = result.slice(0, 10);
+
+  res.json(result.map(video => video.toJSON()));
 });
 
-// const getVideos = async (collection, total) => {
-//   const videos = await collection.find({}).sort({ likes: -1 }).limit(1000);
-//   const result = videos.map(e => e.video_id)
-//     .map((e, i, final) => final.indexOf(e) === i && i)
-//     .filter(e => videos[e])
-//     .map(e => videos[e]);
+// Get video by Id
+videosRouter.get('/search/:id', async (req, res) => {
+  try {
+    const result = await Video
+      .find({ video_id: req.params.id })
+      .sort({ views: -1 });
 
-//   return result.slice(0, total);
-// };
+    res.json(result[0].toJSON());
+  } catch (exception) {
+    res.status(400).end();
+  }
+});
 
 // videosRouter.get('/top10likesgb', async (req, res) => {
 //   // const query = await gbVideo.aggregate([
@@ -43,36 +58,6 @@ videosRouter.get('/top10views', async (req, res) => {
 
 //   // console.log(videos[0].values.slice(0, 10));
 
-//   const result = await getVideos(gbVideo, 10);
-//   res.json(result.map(video => video.toJSON()));
-// });
-// videosRouter.get('/top10likesca', async (req, res) => {
-//   const result = await getVideos(caVideo, 10);
-//   res.json(result.map(video => video.toJSON()));
-// });
-// videosRouter.get('/top10likesde', async (req, res) => {
-//   const result = await getVideos(deVideo, 10);
-//   res.json(result.map(video => video.toJSON()));
-// });
-// videosRouter.get('/top10likesfr', async (req, res) => {
-//   const result = await getVideos(frVideo, 10);
-//   res.json(result.map(video => video.toJSON()));
-// });
-// videosRouter.get('/top10likesus', async (req, res) => {
-//   const result = await getVideos(usVideo, 10);
-//   res.json(result.map(video => video.toJSON()));
-// });
-
-// // Searhc for video by id
-// videosRouter.get('/search/:id', async (req, res) => {
-//   let result = await gbVideo.find({ video_id: req.params.id })
-//     .sort({ likes: -1 });
-//   console.log(result.length);
-//   result = await usVideo.find({ video_id: req.params.id })
-//     .sort({ likes: -1 });
-//   console.log(result.length);
-
-//   res.json(result[0]);
 // });
 
 module.exports = videosRouter;

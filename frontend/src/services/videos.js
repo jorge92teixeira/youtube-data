@@ -4,7 +4,7 @@ import axios from 'axios';
 const baseUrl = '/api/videos/';
 
 export const getTop10 = cc => axios
-  .get(`${baseUrl}top10likes${cc}`)
+  .get(`${baseUrl}top10views/${cc}`)
   .then(res => res.data);
 
 export const searchVideoById = videoId => axios

@@ -9,12 +9,6 @@ const Table = ({ top10Videos }) => {
   // });
 
   const columns = [{
-    Header: 'Thumbnail',
-    acessor: 'thumbnail_link',
-    // Cell: (thumb) => {
-    //   return <img src={thumb.thumbnail_link}></img>
-    // }
-  }, {
     Header: 'Title',
     accessor: 'title',
   }, {
