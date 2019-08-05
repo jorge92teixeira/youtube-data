@@ -1,24 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import { searchVideoById } from '../services/videos';
-
-const SearchBar = () => {
-  const [newFilter, setNewFilter] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
-
-  const handleNewFilter = (event) => {
-    setNewFilter(event.target.value);
-  };
-
-  const handleNewSearch = (event) => {
-    event.preventDefault();
-    searchVideoById(newFilter)
-      .then((res) => {
-        console.log(res);
-      });
-    setNewFilter('');
-  };
-
+const SearchBar = ({ newFilter, handleNewFilter, handleNewSearch }) => {
   return (
     <form onSubmit={handleNewSearch}>
       search:

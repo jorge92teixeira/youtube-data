@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { getTop10 } from '../services/videos';
 
 import Table from './Table';
-import SearchBar from './SearchBar';
+import Search from './Search';
 
 const App = () => {
   // const cc = ['gb','us','ca','fr','de'];
@@ -40,7 +40,8 @@ const App = () => {
   return (
     <div>
       <h1>Hello Homepage</h1>
-      <SearchBar />
+      <Search />
+      <br />
       Great Britain
       <Table top10Videos={top10Videosgb} />
       United States
