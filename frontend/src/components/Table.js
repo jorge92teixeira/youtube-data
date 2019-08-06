@@ -5,7 +5,7 @@ import React from 'react';
 
 import TableEntry from './TableEntry';
 
-const Table = ({ videosToShow }) => {
+const Table = ({ cc, videosToShow, sort }) => {
   if (videosToShow.length === 0) {
     return (<div />);
   }
@@ -15,10 +15,10 @@ const Table = ({ videosToShow }) => {
       <thead>
         <tr>
           <th>Thumbnail</th>
-          <th>Title</th>
-          <th>Channel</th>
-          <th>Likes</th>
-          <th>Views</th>
+          <th onClick={() => sort(cc, 'title')}>Title</th>
+          <th onClick={() => sort(cc, 'channel_title')}>Channel</th>
+          <th onClick={() => sort(cc, 'views')}>views</th>
+          <th onClick={() => sort(cc, 'likes')}>likes</th>
         </tr>
       </thead>
       <tbody>

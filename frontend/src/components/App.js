@@ -18,6 +18,7 @@ const App = () => {
     getTop10('gb')
       .then((res) => {
         setTop10Videosgb(res);
+        console.log(res);
       });
     getTop10('us')
       .then((res) => {
@@ -37,21 +38,77 @@ const App = () => {
       });
   }, []);
 
+  const sort = (cc, by) => {
+    console.log('Im going to sort by ', by, cc);
+
+    let aux = [];
+
+    switch (cc) {
+      case 'gb':
+        aux = [...top10Videosgb];
+        if (aux[0][by] < aux[1][by]) {
+          aux.sort((a, b) => ((a[by] < b[by]) ? 1 : -1));
+        } else {
+          aux.sort((a, b) => ((a[by] > b[by]) ? 1 : -1));
+        }
+        setTop10Videosgb(aux);
+        break;
+      case 'us':
+        aux = [...top10Videosus];
+        if (aux[0][by] < aux[1][by]) {
+          aux.sort((a, b) => ((a[by] < b[by]) ? 1 : -1));
+        } else {
+          aux.sort((a, b) => ((a[by] > b[by]) ? 1 : -1));
+        }
+        setTop10Videosus(aux);
+        break;
+      case 'ca':
+        aux = [...top10Videosca];
+        if (aux[0][by] < aux[1][by]) {
+          aux.sort((a, b) => ((a[by] < b[by]) ? 1 : -1));
+        } else {
+          aux.sort((a, b) => ((a[by] > b[by]) ? 1 : -1));
+        }
+        setTop10Videosca(aux);
+        break;
+      case 'fr':
+        aux = [...top10Videosfr];
+        if (aux[0][by] < aux[1][by]) {
+          aux.sort((a, b) => ((a[by] < b[by]) ? 1 : -1));
+        } else {
+          aux.sort((a, b) => ((a[by] > b[by]) ? 1 : -1));
+        }
+        setTop10Videosfr(aux);
+        break;
+      case 'de':
+        aux = [...top10Videosde];
+        if (aux[0][by] < aux[1][by]) {
+          aux.sort((a, b) => ((a[by] < b[by]) ? 1 : -1));
+        } else {
+          aux.sort((a, b) => ((a[by] > b[by]) ? 1 : -1));
+        }
+        setTop10Videosde(aux);
+        break;
+      default:
+        console.log('default');
+    }
+  };
+
   return (
     <div>
       <h1>Hello Homepage</h1>
       <Search />
       <br />
       <h3>Great Britain</h3>
-      <Table videosToShow={top10Videosgb} />
+      <Table cc="gb" videosToShow={top10Videosgb} sort={sort} />
       <h3>United States</h3>
-      <Table videosToShow={top10Videosus} />
+      <Table cc="us" videosToShow={top10Videosus} sort={sort} />
       <h3>Canada</h3>
-      <Table videosToShow={top10Videosca} />
+      <Table cc="ca" videosToShow={top10Videosca} sort={sort} />
       <h3>France</h3>
-      <Table videosToShow={top10Videosfr} />
+      <Table cc="fr" videosToShow={top10Videosfr} sort={sort} />
       <h3>Deutchland</h3>
-      <Table videosToShow={top10Videosde} />
+      <Table cc="de" videosToShow={top10Videosde} sort={sort} />
     </div>
   );
 };
