@@ -42,16 +42,16 @@ const App = () => {
       <h1>Hello Homepage</h1>
       <Search />
       <br />
-      Great Britain
-      <Table top10Videos={top10Videosgb} />
-      United States
-      <Table top10Videos={top10Videosus} />
-      Canada
-      <Table top10Videos={top10Videosca} />
-      France
-      <Table top10Videos={top10Videosfr} />
-      Deutchland
-      <Table top10Videos={top10Videosde} />
+      <h3>Great Britain</h3>
+      <Table videosToShow={top10Videosgb} />
+      <h3>United States</h3>
+      <Table videosToShow={top10Videosus} />
+      <h3>Canada</h3>
+      <Table videosToShow={top10Videosca} />
+      <h3>France</h3>
+      <Table videosToShow={top10Videosfr} />
+      <h3>Deutchland</h3>
+      <Table videosToShow={top10Videosde} />
     </div>
   );
 };

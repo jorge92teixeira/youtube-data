@@ -1,58 +1,41 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import ReactTable from 'react-table';
+// import ReactTable from 'react-table';
 // import PropTypes from 'prop-types';
 
-const Table = ({ top10Videos }) => {
-  // const thumb = top10Videos.map(video => {
-  //   return video.thumbnail_link;
-  // });
+import TableEntry from './TableEntry';
 
-  const columns = [{
-    Header: 'Title',
-    accessor: 'title',
-  }, {
-    Header: 'Channel',
-    accessor: 'channel_title',
-  }, {
-    Header: 'Views',
-    accessor: 'views',
-  }, {
-    Header: 'Likes',
-    accessor: 'likes',
-  }, {
-    Header: 'Id',
-    accessor: 'video_id',
-  },
-  ];
+const Table = ({ videosToShow }) => {
+  if (videosToShow.length === 0) {
+    return (<div />);
+  }
 
   return (
-    <div>
-      <ReactTable data={top10Videos} columns={columns} />
-    </div>
-    // <table>
-    //   <thead>
-    //     <tr>
-    //       <th>Thumbnail</th>
-    //       <th>Title</th>
-    //       <th>Channel</th>
-    //       <th>Likes</th>
-    //       <th>Views</th>
-    //     </tr>
-    //   </thead>
-    //   <tbody>
-    //     {top10Videos.map(video =>
-    //     < TableEntrie
-    //       key={video.id}
-    //       likes={video.likes}
-    //       title={video.title}
-    //       channel={video.channel_title}
-    //       views={video.views}
-    //       thumbnail_link={video.thumbnail_link}
-    //     >
-    //     </TableEntrie>)}
-    //   </tbody>
-    // </table>
+    <table>
+      <thead>
+        <tr>
+          <th>Thumbnail</th>
+          <th>Title</th>
+          <th>Channel</th>
+          <th>Likes</th>
+          <th>Views</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          videosToShow.map(video => (
+            <TableEntry
+              key={video.id}
+              likes={video.likes}
+              title={video.title}
+              channel={video.channel_title}
+              views={video.views}
+              thumbnailLink={video.thumbnail_link}
+            />
+          ))
+        }
+      </tbody>
+    </table>
   );
 };
 

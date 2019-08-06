@@ -31,7 +31,10 @@ videosRouter.get('/search/:id', async (req, res) => {
       .find({ video_id: req.params.id })
       .sort({ views: -1 });
 
-    res.json(result[0].toJSON());
+    const videos = result.slice(0, 1);
+
+    res.json(videos.map(v => v.toJSON()));
+    // res.json(result[0].toJSON());
   } catch (exception) {
     res.status(400).end();
   }

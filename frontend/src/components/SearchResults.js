@@ -1,15 +1,18 @@
 import React from 'react';
 
+import Table from './Table';
+
 const SearchResults = ({ searchData }) => {
   return (
     <div>
-      <p>
+      {/* <p>
         {searchData.title}
         {searchData.channel_title}
         {searchData.views}
         {searchData.likes}
         {searchData.video_id}
-      </p>
+      </p> */}
+      <Table videosToShow={searchData} />
     </div>
   );
 };
