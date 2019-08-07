@@ -50,12 +50,17 @@ videosRouter.get('/top10views', async (req, res) => {
 
 // Get video by Id
 videosRouter.get('/search/:id', async (req, res) => {
+  const videos = [];
   try {
-    const result = await Video
+    const matchVideoId = await Video
       .find({ video_id: req.params.id })
       .sort({ views: -1 });
+    videos.push(...matchVideoId.slice(0, 1));
 
-    const videos = result.slice(0, 1);
+    const matchTitle = await Video
+      .find({ title: { $regex: req.params.id, $options: 'i' } })
+      .sort({ views: -1 });
+    videos.push(...matchTitle.slice(0, 1));
 
     res.json(videos.map(v => v.toJSON()));
   } catch (exception) {
