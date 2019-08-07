@@ -29,11 +29,6 @@ videoSchema.set('toJSON', {
   },
 });
 
-// const gbVideo = mongoose.model('gbVideo', videoSchema, 'gbVideos');
-// const usVideo = mongoose.model('usVideo', videoSchema, 'usVideos');
-// const deVideo = mongoose.model('deVideo', videoSchema, 'deVideos');
-// const frVideo = mongoose.model('frVideo', videoSchema, 'frVideos');
-// const caVideo = mongoose.model('caVideo', videoSchema, 'caVideos');
 const Video = mongoose.model('Video', videoSchema);
 
 module.exports = {
