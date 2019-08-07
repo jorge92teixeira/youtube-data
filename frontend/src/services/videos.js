@@ -1,10 +1,9 @@
-/* eslint-disable import/prefer-default-export */
 import axios from 'axios';
 
 const baseUrl = '/api/videos/';
 
-export const getTop10 = cc => axios
-  .get(`${baseUrl}top10views/${cc}`)
+export const getTop10 = () => axios
+  .get(`${baseUrl}top10views/`)
   .then(res => res.data);
 
 export const searchVideoById = videoId => axios
