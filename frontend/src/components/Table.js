@@ -1,7 +1,6 @@
-/* eslint-disable react/prop-types */
+/* eslint-disable no-underscore-dangle */
 import React from 'react';
-// import ReactTable from 'react-table';
-// import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 
 import TableEntry from './TableEntry';
 
@@ -37,6 +36,30 @@ const Table = ({ index, videosToShow, sort }) => {
       </tbody>
     </table>
   );
+};
+
+Table.propTypes = {
+  index: propTypes.number,
+  sort: propTypes.func,
+  videosToShow: propTypes.arrayOf(
+    propTypes.shape({
+      _id: propTypes.string,
+      views: propTypes.number,
+      title: propTypes.string,
+      channel_title: propTypes.string,
+      category_id: propTypes.number,
+      likes: propTypes.number,
+      dislikes: propTypes.number,
+      comment_count: propTypes.number,
+      thumbnail_link: propTypes.string,
+      country_code: propTypes.string,
+    }),
+  ).isRequired,
+};
+
+Table.defaultProps = {
+  index: 0,
+  sort: () => {},
 };
 
 export default Table;
