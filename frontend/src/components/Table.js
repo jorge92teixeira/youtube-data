@@ -25,7 +25,7 @@ const Table = ({ cc, videosToShow, sort }) => {
         {
           videosToShow.map(video => (
             <TableEntry
-              key={video.id}
+              key={video._id}
               likes={video.likes}
               title={video.title}
               channel={video.channel_title}
